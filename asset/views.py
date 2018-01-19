@@ -42,11 +42,47 @@ def asset_add(request):
 				new.asset_people = asset_people
 				new.asset_application = asset_application
 				new.save()
-				return redirect('asset_list.html')
+				return redirect('asset/asset_list.html')
             		except:
                 		message = "填写错误！"
 				return redirect('asset/asset_add.html')
 
    	form = forms.Assetadd()
         return render(request, 'asset/asset_add.html', {'form' : form })
+
+def asset_mod(request,pk):
+        asset = Asset.objects.get(pk=pk)
+#	print asset.asset_application
+	if request.method == "POST":
+                form = forms.Assetadd(request.POST,initial = [{'asset_name': asset.asset_name,'asset_number': asset.asset_number,'asset_source':asset.asset_source,'asset_people':asset.asset_people,'asset_application':asset.asset_application}])
+
+                if form.is_valid():
+
+			asset_name = form.cleaned_data['asset_name']
+                        asset_number = form.cleaned_data['asset_number']
+                        asset_source = form.cleaned_data['asset_source']
+                        asset_people = form.cleaned_data['asset_people']
+                        asset_application = form.cleaned_data['asset_application']
+
+			asset.asset_name = asset_name
+                        asset.asset_number = asset_number
+                        asset.asset_source = asset_source
+                        asset.asset_people = asset_people
+                       	asset.asset_application = asset_application
+                        asset.save()
+			return redirect('/asset_list')
+#			return render(request, 'asset/asset_mod.html', {'form' : form ,'asset_name':asset.asset_name})
 	
+	form = forms.Assetadd(initial={
+			'asset_name': asset.asset_name,
+			'asset_number': asset.asset_number,
+			'asset_source':asset.asset_source,
+			'asset_people':asset.asset_people,
+			'asset_application':asset.asset_application
+					})
+	return render(request, 'asset/asset_mod.html', {'form' : form })
+
+def asset_delete(request,pk):
+	asset=Asset.objects.get(pk=pk)
+	asset.delete()
+	return redirect('/asset_list')

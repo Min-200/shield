@@ -16,11 +16,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 #from asset.views  import index , assets_config, assets_add, assets_list, assets_log
-from asset.views import index, asset_list , asset_add, flot, morris,asset_l
+from asset.views import index, asset_list , asset_add, flot, morris,asset_l, asset_mod,asset_delete
+
+app_name = 'shield'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^tables', asset_list),
     url(r'^asset_list', asset_l),
     url(r'^asset_add', asset_add),
+    url(r'^asset_mod/(?P<pk>[0-9]+)/$', asset_mod ,name = 'assetmod'),
+    url(r'^asset_delete/(?P<pk>[0-9]+)/$', asset_delete ,name = 'assetdelete'),
 ]

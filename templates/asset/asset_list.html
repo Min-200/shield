@@ -26,6 +26,7 @@
                                         <th>设备来处</th>
                                         <th>使用人员</th>
                                         <th>用途</th>
+					<th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +38,10 @@
                                         <td class="center">{{ asset.asset_source}}</td>
                                         <td class="center">{{ asset.asset_people }}</td>
                                         <td>{{ asset.asset_application }}</td>
+					<td> 
+					<a href="/asset_mod/{{ asset.pk }}" style="text-decoration:none;"><button  type="button" class="btn btn-default"><abbr title="修改资料"><i class="glyphicon glyphicon-edit"></button></i></abbr></a>
+					<a href="/asset_delete/{{ asset.pk }}" style="text-decoration:none;"><button type="botton" onclick="javascript:return del();" class=btn btn-default><abbr title="删除"><i class="glyphicon glyphicon-trash"></button></i></abbr><a/>
+					</td>
                                     </tr>
                                     {%endfor%}
                                 </tbody>
@@ -84,5 +89,14 @@
             responsive: true
         });
     });
+	function del() {
+		var msg = "您真的确定要删除吗？\n\n请确认！";
+		if (confirm(msg)==true){
+			return true;
+		}else{
+			return false;
+		}
+		}
+
     </script>
 {% endblock asset-add %}
