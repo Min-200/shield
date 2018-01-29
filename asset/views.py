@@ -42,7 +42,7 @@ def asset_add(request):
 				new.asset_people = asset_people
 				new.asset_application = asset_application
 				new.save()
-				return redirect('asset/asset_list.html')
+				return redirect('asset_list.html')
             		except:
                 		message = "填写错误！"
 				return redirect('asset/asset_add.html')

@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 #from asset.views  import index , assets_config, assets_add, assets_list, assets_log
 from asset.views import index, asset_list , asset_add, flot, morris,asset_l, asset_mod,asset_delete
-
+from task.views import task_execute,task_add,task_list,task_delete,host_list
 app_name = 'shield'
 
 urlpatterns = [
@@ -28,4 +28,9 @@ urlpatterns = [
     url(r'^asset_add', asset_add),
     url(r'^asset_mod/(?P<pk>[0-9]+)/$', asset_mod ,name = 'assetmod'),
     url(r'^asset_delete/(?P<pk>[0-9]+)/$', asset_delete ,name = 'assetdelete'),
+    url(r'^host_list', host_list),
+    url(r'^task_execute',task_execute),
+    url(r'^task_add',task_add),
+    url(r'^task_list',task_list),
+    url(r'^task_delete/(?P<pk>[0-9]+)/$', task_delete)
 ]

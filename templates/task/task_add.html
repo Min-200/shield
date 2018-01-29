@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><i class="fa  fa-desktop"></i> 资产添加</h1>
+            <h1 class="page-header"><i class="fa  fa-desktop"></i> 任务添加</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   	 资产修改
+                   	 任务列表
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -21,51 +21,56 @@
                    		</div>
                         <div class="col-lg-8">
 			<fieldset>
-			<legend>设备资产信息修改 - 必填信息</legend> 
-				 {% if message %}
+			<legend>任务录入 - 必填信息</legend> 
+				{% if message %}
                   			<div class="alert alert-warning">{{ message }}</div>
-              			 {% endif %}
-
+				{% endif %}
  
-			<form action="" method="post" class="main form-horizontal">
+			<form action="task_add" method="post" class="main form-horizontal">
 			{% csrf_token %}
   	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_name.id_for_label }}">设备名称:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.task_name.id_for_label }}">任务名称:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_name }}
-      						{{ form.asset_name.errors }}
+      						{{ form.task_name }}
+      						{{ form.task_name.errors }}
     					</div>
 				</div>
 	
 				<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_number.id_for_label }}">设备编号:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.task_describe.id_for_label }}">任务描述:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_number }}
-      						{{ form.asset_number.errors }}
+      						{{ form.task_describe }}
+      						{{ form.task_describe.errors }}
     					</div>
+				</div>
+  	   			<div class="form-group">
+      					<label class= "col-sm-2 control-label" for="{{ form.task_host.id_for_label }}">主机:</label>
+    					<div class="col-sm-6">
+      						{{ form.task_host }}
+      						{{ form.task_host.errors }}
+    					</div>
+				</div>
 
-				</div>
   	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_source.id_for_label }}">设备来源:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.task_command.id_for_label }}">计划任务:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_source }}
-      						{{ form.asset_source.errors }}
+      						{{ form.task_command }}
+      						{{ form.task_command.errors }}
     					</div>
 				</div>
-  	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_people.id_for_label }}">使用人员:</label>
-    					<div class="col-sm-6">
-      						{{ form.asset_people }}
-      						{{ form.asset_people.errors }}
-    					</div>
-				</div>
-  	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_application.id_for_label }}">设备用途:</label>
-    					<div class="col-sm-6">
-      						{{ form.asset_application }}
-      						{{ form.asset_application.errors }}
-    					</div>
-				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 				<div class="form-group">
