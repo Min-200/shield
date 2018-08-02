@@ -9,3 +9,11 @@
 第一步完成，资产的增删改除都以实现
 
 第二部，计划任务列表实现，增加远程机器命令的任务实现,实现远程计划任务设置的增加和删除(单台)
+
+
+
+安装：
+apt-get install libmysqlclient-dev
+pip install paramiko
+python manage.py makemigrations
+pip install MySQL-python
