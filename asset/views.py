@@ -6,7 +6,6 @@ from .models import Asset
 import forms
 from .forms import Assetadd
 import models
-
 def index(request):
 	return render(request, 'index.html')
 def asset_list(request):
@@ -25,30 +24,32 @@ def morris(request):
 
 def asset_add(request):
 	if request.method == "POST":
-		form = forms.Assetadd(request.POST)
-        	message = "请检查填写的内容！"
-        	if form.is_valid():
-            		asset_name = form.cleaned_data['asset_name']
-            		asset_number = form.cleaned_data['asset_number']
-            		asset_source = form.cleaned_data['asset_source']
-            		asset_people = form.cleaned_data['asset_people']
-            		asset_application = form.cleaned_data['asset_application']			
-            		try:
-				print asset_name,asset_number,asset_source,asset_people,asset_application
-                		new = models.Asset.objects.create()
-				new.asset_name = asset_name
-				new.asset_number = asset_number
-				new.asset_source = asset_source
-				new.asset_people = asset_people
-				new.asset_application = asset_application
-				new.save()
-				return redirect('asset_list.html')
-            		except:
-                		message = "填写错误！"
-				return redirect('asset/asset_add.html')
+			form = forms.Assetadd(request.POST)
+			message = "请检查填写的内容！"
+			if form.is_valid():
+					asset_name = form.cleaned_data['asset_name']
+					asset_sou_ip = form.cleaned_data['asset_sou_ip']
+					asset_sou_dir = form.cleaned_data['asset_sou_dir']
+					asset_des_ip = form.cleaned_data['asset_des_ip']
+					asset_des_dir = form.cleaned_data['asset_des_dir']
+					asset_cron    = form.cleaned_data['asset_cron']
+			try:
+				#print asset_name,asset_number,asset_source,asset_people,asset_application
+					new = models.Asset.objects.create()
+					new.asset_name = asset_name
+					new.asset_sou_ip = asset_sou_ip
+					new.asset_sou_dir = asset_sou_dir
+					new.asset_des_ip = asset_des_ip
+					new.asset_des_dir = asset_des_dir
+					new.asset_cron = asset_cron
+					new.save()
+					return redirect('asset_list.html')
+			except:
+					message = ""
+					return redirect('asset/asset_add.html')
 
-   	form = forms.Assetadd()
-        return render(request, 'asset/asset_add.html', {'form' : form })
+	form = forms.Assetadd()
+	return render(request, 'asset/asset_add.html', {'form' : form })
 
 def asset_mod(request,pk):
         asset = Asset.objects.get(pk=pk)
