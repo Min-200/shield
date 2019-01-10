@@ -17,28 +17,30 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table style="width:200%"  class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>登记时间</th>
-                                        <th>资产名称</th>
-                                        <th>设备编号</th>
-                                        <th>设备来处</th>
-                                        <th>使用人员</th>
-                                        <th>用途</th>
-					<th>操作</th>
+                                        <th width="600">登记时间</th>
+                                        <th width="600">资产名称</th>
+                                        <th width="600">设备编号</th>
+                                        <th width="600">设备来处</th>
+                                        <th width="600">使用人员</th>
+                                        <th width="1000">用途</th>
+                                        <th width="1000">用途</th>
+					                    <th width="600">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for asset in asset_list %}
                                     <tr class="odd gradeX">
-                                        <td>{{ asset.created_time}}</td>
-                                        <td>{{ asset.asset_name}}</td>
-                                        <td>{{ asset.asset_number}}</td>
-                                        <td class="center">{{ asset.asset_source}}</td>
-                                        <td class="center">{{ asset.asset_people }}</td>
-                                        <td>{{ asset.asset_application }}</td>
-					<td> 
+                                        <td width="600">{{ asset.created_time}}</td>
+                                        <td width="600">{{ asset.asset_name}}</td>
+                                        <td width="600">{{ asset.asset_number}}</td>
+                                        <td width="600">{{ asset.asset_source}}</td>
+                                        <td width="600">{{ asset.asset_people }}</td>
+                                        <td width="1000">{{ asset.asset_application }}</td>
+                                        <td width="1000">{{ asset.asset_application }}</td>
+					<td width="600">
 					<a href="/asset_mod/{{ asset.pk }}" style="text-decoration:none;"><button  type="button" class="btn btn-default"><abbr title="修改资料"><i class="glyphicon glyphicon-edit"></button></i></abbr></a>
 					<a href="/asset_delete/{{ asset.pk }}" style="text-decoration:none;"><button type="botton" onclick="javascript:return del();" class=btn btn-default><abbr title="删除"><i class="glyphicon glyphicon-trash"></button></i></abbr><a/>
 					</td>
@@ -62,31 +64,33 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="static/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="/static/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- DataTables JavaScript -->
     {% block script %}
-    <script src="static/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="static/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="static/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/static/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/static/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/static/vendor/datatables-responsive/dataTables.responsive.js"></script>
     {% endblock script %}
     <!-- Custom Theme JavaScript -->
-    <script src="static/dist/js/sb-admin-2.js"></script>
+    <script src="/static/dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+          "scrollX":true,
+		    bAutoWidth: false
         });
     });
 	function del() {
@@ -95,6 +99,7 @@
 			return true;
 		}else{
 			return false;
+
 		}
 		}
 
