@@ -6,6 +6,8 @@ from .models import Asset
 import forms
 from .forms import Assetadd
 import models
+import django.utils.timezone as timezone
+
 def index(request):
 	return render(request, 'index.html')
 def asset_list(request):
@@ -52,34 +54,29 @@ def asset_add(request):
 	return render(request, 'asset/asset_add.html', {'form' : form })
 
 def asset_mod(request,pk):
-        asset = Asset.objects.get(pk=pk)
+	asset = Asset.objects.get(pk=pk)
 #	print asset.asset_application
 	if request.method == "POST":
-                form = forms.Assetadd(request.POST,initial = [{'asset_name': asset.asset_name,'asset_number': asset.asset_number,'asset_source':asset.asset_source,'asset_people':asset.asset_people,'asset_application':asset.asset_application}])
-
-                if form.is_valid():
-
-			asset_name = form.cleaned_data['asset_name']
-                        asset_number = form.cleaned_data['asset_number']
-                        asset_source = form.cleaned_data['asset_source']
-                        asset_people = form.cleaned_data['asset_people']
-                        asset_application = form.cleaned_data['asset_application']
-
-			asset.asset_name = asset_name
-                        asset.asset_number = asset_number
-                        asset.asset_source = asset_source
-                        asset.asset_people = asset_people
-                       	asset.asset_application = asset_application
-                        asset.save()
+		form = forms.Assetadd(request.POST,initial = [{'asset_name': asset.asset_name,'asset_sou_ip': asset.asset_sou_ip,'asset_sou_dir':asset.asset_sou_dir,'asset_des_ip':asset.asset_des_ip,'asset_des_dir':asset.asset_des_dir,'asset_cron':asset.asset_cron}])
+		if form.is_valid():
+			asset.created_time = timezone.now()
+			asset.asset_name = form.cleaned_data['asset_name']
+			asset.asset_sou_ip = form.cleaned_data['asset_sou_ip']
+			asset.asset_sou_dir = form.cleaned_data['asset_sou_dir']
+			asset.asset_des_ip = form.cleaned_data['asset_des_ip']
+			asset.asset_des_dir = form.cleaned_data['asset_des_dir']
+			asset.asset_cron = form.cleaned_data['asset_cron']
+			asset.save()
 			return redirect('/asset_list')
 #			return render(request, 'asset/asset_mod.html', {'form' : form ,'asset_name':asset.asset_name})
 	
 	form = forms.Assetadd(initial={
 			'asset_name': asset.asset_name,
-			'asset_number': asset.asset_number,
-			'asset_source':asset.asset_source,
-			'asset_people':asset.asset_people,
-			'asset_application':asset.asset_application
+			'asset_sou_ip': asset.asset_sou_ip,
+			'asset_sou_dir':asset.asset_sou_dir,
+			'asset_des_ip':asset.asset_des_ip,
+			'asset_des_dir':asset.asset_des_dir,
+			'asset_cron':asset.asset_cron
 					})
 	return render(request, 'asset/asset_mod.html', {'form' : form })
 
