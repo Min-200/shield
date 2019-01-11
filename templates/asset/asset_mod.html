@@ -38,32 +38,39 @@
 				</div>
 	
 				<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_number.id_for_label }}">设备编号:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.asset_sou_ip.id_for_label }}">源IP:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_number }}
-      						{{ form.asset_number.errors }}
+      						{{ form.asset_sou_ip }}
+      						{{ form.asset_sou_ip.errors }}
     					</div>
 
 				</div>
   	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_source.id_for_label }}">设备来源:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.asset_sou_dir.id_for_label }}">源目录:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_source }}
-      						{{ form.asset_source.errors }}
+      						{{ form.asset_sou_dir }}
+      						{{ form.asset_sou_dir.errors }}
     					</div>
 				</div>
   	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_people.id_for_label }}">使用人员:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.asset_des_ip.id_for_label }}">目标IP:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_people }}
-      						{{ form.asset_people.errors }}
+      						{{ form.asset_des_ip }}
+      						{{ form.asset_des_ip.errors }}
     					</div>
 				</div>
   	   			<div class="form-group">
-      					<label class= "col-sm-2 control-label" for="{{ form.asset_application.id_for_label }}">设备用途:</label>
+      					<label class= "col-sm-2 control-label" for="{{ form.asset_des_dir.id_for_label }}">目标目录:</label>
     					<div class="col-sm-6">
-      						{{ form.asset_application }}
-      						{{ form.asset_application.errors }}
+      						{{ form.asset_des_dir }}
+      						{{ form.asset_des_dir.errors }}
+    					</div>
+				</div>
+                <div class="form-group">
+      					<label class= "col-sm-2 control-label" for="{{ form.asset_cron.id_for_label }}">计划任务:</label>
+    					<div class="col-sm-6">
+      						{{ form.asset_cron }}
+      						{{ form.asset_cron.errors }}
     					</div>
 				</div>
 
