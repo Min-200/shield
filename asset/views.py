@@ -7,13 +7,22 @@ import forms
 from .forms import Assetadd
 import models
 import django.utils.timezone as timezone
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
+
+
 
 def index(request):
+	print "1"
+	print  request.user
 	return render(request, 'index.html')
+
+@login_required()
 def asset_list(request):
 	asset_list = Asset.objects.all()
 	return render(request, 'tables.html',context ={ 'asset_list': asset_list})
 
+@login_required()
 def asset_l(request):
 	asset_list = Asset.objects.all()
 	return render(request, 'asset/asset_list.html',context ={ 'asset_list': asset_list})

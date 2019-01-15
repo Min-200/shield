@@ -18,11 +18,12 @@ from django.contrib import admin
 #from asset.views  import index , assets_config, assets_add, assets_list, assets_log
 from asset.views import index, asset_list , asset_add, flot, morris,asset_l, asset_mod,asset_delete
 from task.views import task_execute,task_add,task_list,task_delete,host_list
+from userinfo.views import *
 app_name = 'shield'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^index', index),
     url(r'^tables', asset_list),
     url(r'^asset_list', asset_l),
     url(r'^asset_add', asset_add),
@@ -32,5 +33,8 @@ urlpatterns = [
     url(r'^task_execute',task_execute),
     url(r'^task_add',task_add),
     url(r'^task_list',task_list),
-    url(r'^task_delete/(?P<pk>[0-9]+)/$', task_delete)
+    url(r'^task_delete/(?P<pk>[0-9]+)/$', task_delete),
+    url(r'^login',login),
+    url(r'^accounts/login',login),
+    url(r'^accounts/logout',logout)
 ]

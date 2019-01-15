@@ -14,5 +14,5 @@ class Asset(models.Model):
 	asset_des_dir = models.TextField(max_length=200)
 	asset_cron    = models.TextField(max_length=500)
 	
-	#def __unicode__(self):
-	#	return "%s,%s,%s,%s,%s,%s"%(self.created_time, self.asset_name, self.asset_number, self.asset_source, self.asset_people, self.asset_application)
+	def __unicode__(self):
+		return "%s,%s,%s,%s,%s,%s"%(self.asset_name, self.asset_sou_ip, self.asset_sou_dir, self.asset_des_ip, self.asset_des_dir,self.asset_cron)
