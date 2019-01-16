@@ -23,6 +23,7 @@ app_name = 'shield'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index),
     url(r'^index', index),
     url(r'^tables', asset_list),
     url(r'^asset_list', asset_l),

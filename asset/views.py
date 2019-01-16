@@ -9,6 +9,7 @@ import models
 import django.utils.timezone as timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from django.contrib.auth.decorators import permission_required
 
 
 
@@ -33,6 +34,7 @@ def flot(request):
 def morris(request):
 	return render(request, 'morris.html')
 
+@permission_required('asset.add_asset',raise_exception=True) #raise_exception=True 会抛出异常
 def asset_add(request):
 	if request.method == "POST":
 			form = forms.Assetadd(request.POST)
@@ -62,6 +64,7 @@ def asset_add(request):
 	form = forms.Assetadd()
 	return render(request, 'asset/asset_add.html', {'form' : form })
 
+@permission_required('asset.change_asset',raise_exception=True)
 def asset_mod(request,pk):
 	asset = Asset.objects.get(pk=pk)
 #	print asset.asset_application
@@ -89,6 +92,7 @@ def asset_mod(request,pk):
 					})
 	return render(request, 'asset/asset_mod.html', {'form' : form })
 
+@permission_required('asset.delete_asset',raise_exception=True)
 def asset_delete(request,pk):
 	asset=Asset.objects.get(pk=pk)
 	asset.delete()

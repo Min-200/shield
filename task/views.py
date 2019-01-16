@@ -6,16 +6,10 @@ import forms
 # Create your views here.
 import paramiko
 import models
+from django.contrib.auth.decorators import permission_required
 def host_list(request):
 	pass
 	return render(request,'task/host_list.html')
-
-
-
-
-
-
-
 
 
 
@@ -23,7 +17,6 @@ def task_list(request):
 	tasklist = Task.objects.all()
 
 	return render(request,'task/task_list.html',{'tasklist':tasklist})
-
 
 
 def task_execute(request):
@@ -37,7 +30,7 @@ def task_execute(request):
 				print task_target
 				ssh = paramiko.SSHClient()
 				ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-				ssh.connect(hostname=task_target, port=22, username='root', password='123456')
+				ssh.connect(hostname=task_target, port=22, username='root', password='zjxl2018#')
 				stdin, stdout, stderr = ssh.exec_command(task_agrs)
 				succ_result = stdout.read()
 				print succ_result
@@ -50,7 +43,7 @@ def task_execute(request):
         form = forms.Taskstart()
         return render(request, 'task/task_execute.html', {'form' : form })
 
-
+@permission_required('task.add_task',raise_exception=True)
 def task_add(request):
 	if request.method == "POST":
 		form = forms.Taskadd(request.POST)
@@ -73,7 +66,7 @@ def task_add(request):
 			try:	
 				ssh = paramiko.SSHClient()
                                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-                                ssh.connect(hostname=task_host, port=22, username='root', password='123456')
+                                ssh.connect(hostname=task_host, port=22, username='root', password='zjxl2018#')
 				command = 'echo "%s" >> /etc/crontab' %(task_command)
 				print task_command
                                 stdin, stdout, stderr = ssh.exec_command(command)
@@ -91,19 +84,20 @@ def task_add(request):
 	form = forms.Taskadd()
 	return render(request,'task/task_add.html',{'form':form})
 
+@permission_required('task.delete_task',raise_exception=True)
 def task_delete(request,pk):
 	try:
 		task = Task.objects.get(pk=pk)
 		task_host    = task.task_host
 		task_describe = task.task_describe
 		ssh = paramiko.SSHClient()
-        	ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        	ssh.connect(hostname=task_host, port=22, username='root', password='123456')
-        	command = 'sed -i "/%s/d"  /etc/crontab' %(task_describe)
-        	print task_describe
-        	stdin, stdout, stderr = ssh.exec_command(command)
-        	print command
-        	ssh.close()
+		ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		ssh.connect(hostname=task_host, port=22, username='root', password='123456')
+		command = 'sed -i "/%s/d"  /etc/crontab' %(task_describe)
+		print task_describe
+		stdin, stdout, stderr = ssh.exec_command(command)
+		print command
+		ssh.close()
 		task.delete()
 	except:		
 		pass
