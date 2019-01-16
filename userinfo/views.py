@@ -16,6 +16,7 @@ def login(request):
             password = request.POST["password"]
             print username,password
             user = auth.authenticate(username=username,password=password)
+
             print user
             if user is not None:
                 print "user is authenticate"
@@ -26,8 +27,8 @@ def login(request):
 
             else:
                 print "user is not authenticate"
-                return render(request,"index.html",{"error":"passwd if err"})
-
+#            return render(request,"index.html",{"error":"passwd if err"})
+                return HttpResponse("User is not authenticate")
 
         return render(request,"login.html")
 
