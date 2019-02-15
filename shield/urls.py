@@ -19,6 +19,7 @@ from django.contrib import admin
 from asset.views import index, asset_list , asset_add, flot, morris,asset_l, asset_mod,asset_delete
 from task.views import task_execute,task_add,task_list,task_delete,host_list
 from userinfo.views import *
+from subversion.views import *
 app_name = 'shield'
 
 urlpatterns = [
@@ -37,5 +38,7 @@ urlpatterns = [
     url(r'^task_delete/(?P<pk>[0-9]+)/$', task_delete),
     url(r'^login',login),
     url(r'^accounts/login',login),
-    url(r'^accounts/logout',logout)
+    url(r'^accounts/logout',logout),
+    url(r'^svnlist',svnlist)
+#    url(r'^svnadd',svnadd)
 ]
