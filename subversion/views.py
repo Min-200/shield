@@ -11,15 +11,14 @@ from django.contrib import auth
 from django.contrib.auth.decorators import permission_required
 import paramiko
 
-def SSH(host,username,password,svnname):
+def SSH(host,username,password,svnname,filename):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(hostname=host, port=22, username=username, password=password)
-    command = 'cd /var/tmp/svn && svnadmin create %s && cp LMK/hooks/pre-commit %s/hooks/ &&chmod -R 777 %s' %(svnname,svnname)
-    #command1 = 'bash /data/svn/svn_create.sh %s %s' %(svnname,filename)
+    #command = 'cd /var/tmp/svn && svnadmin create %s && cp LMK/hooks/pre-commit %s/hooks/ && chmod -R 777 %s' %(svnname,svnname,svnname)
+    command = 'cd /data/svn/ && sh /data/svn/svn_create.sh %s /var/tmp/svnupload/%s' %(svnname,filename)
     print command
     stdin, stdout, stderr = ssh.exec_command(command)
-    print stderr,stdin,stdout
     ssh.close()
 
 
@@ -33,7 +32,7 @@ def svnlist(request):
 def svn_add(request):
     if request.method == "POST":
             print "bbb"
-            form = forms.SvnInfo(request.POST)
+            form = forms.SvnInfo(request.POST,request.FILES)
             #message = "请检查填写的内容！"
             if form.is_valid():
 
@@ -43,9 +42,21 @@ def svn_add(request):
                 svn_url = form.cleaned_data['svn_url']
                 print "start"
                 print svn_enname,svn_company,svn_url,svn_zhname
+
                 try:
+                    File = request.FILES.get("myfile", None)
+                    print File.name
+                    if File:
+                        with open("./svnupload/%s" % File.name, 'wb+') as f:
+                            # 分块写入文件
+                            for chunk in File.chunks():
+                                f.write(chunk)
+                    else:
+                        print "no file"
+
+
                     print svn_enname, svn_company, svn_url, svn_zhname
-                    SSH(host="172.17.33.203",username="root",password="123.com",svnname=svn_enname)
+                    SSH(host="192.168.100.249",username="root",password="t3nfltc2d6",svnname=svn_enname,filename=File.name)
                     new = models.Subversion.objects.create()
                     new.svn_enname = svn_enname
                     new.svn_company = svn_company
