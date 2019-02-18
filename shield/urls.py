@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^login',login),
     url(r'^accounts/login',login),
     url(r'^accounts/logout',logout),
-    url(r'^svnlist',svnlist)
-#    url(r'^svnadd',svnadd)
+    url(r'^svnlist',svnlist),
+    url(r'^svn_add',svn_add),
+    url(r'^svn_delete/(?P<pk>[0-9]+)/$', svn_delete)
+
 ]

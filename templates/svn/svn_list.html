@@ -37,8 +37,8 @@
                                         <td width="8%">{{ svn.svn_zhname}}</td>
                                         <td width="15%">{{ svn.svn_url|linebreaksbr }}</td>
                                         <td width="5">
-					<a href="/asset_mod/{{ asset.pk }}" style="text-decoration:none;"><button  type="button" class="btn btn-default"><abbr title="修改资料"><i class="glyphicon glyphicon-edit"></button></i></abbr></a>
-					<a href="/asset_delete/{{ asset.pk }}" style="text-decoration:none;"><button type="botton" onclick="javascript:return del();" class=btn btn-default><abbr title="删除"><i class="glyphicon glyphicon-trash"></button></i></abbr><a/>
+					<a href="/svn_mod/{{ svn.pk }}" style="text-decoration:none;"><button  type="button" class="btn btn-default"><abbr title="修改资料"><i class="glyphicon glyphicon-edit"></button></i></abbr></a>
+					<a href="/svn_delete/{{ svn.pk }}" style="text-decoration:none;"><button type="botton" onclick="javascript:return del();" class=btn btn-default><abbr title="删除"><i class="glyphicon glyphicon-trash"></button></i></abbr><a/>
 					</td>
                                     </tr>
                                     {%endfor%}
