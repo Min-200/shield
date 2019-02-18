@@ -56,7 +56,7 @@ def svn_add(request):
 
 
                     print svn_enname, svn_company, svn_url, svn_zhname
-                    SSH(host="192.168.100.249",username="root",password="t3nfltc2d6",svnname=svn_enname,filename=File.name)
+                    SSH(host="192.168.11.1",username="root",password="123456",svnname=svn_enname,filename=File.name)
                     new = models.Subversion.objects.create()
                     new.svn_enname = svn_enname
                     new.svn_company = svn_company
