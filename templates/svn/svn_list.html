@@ -86,7 +86,8 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
           "scrollX":true,
-            bAutoWidth: true
+            bAutoWidth: true,
+            "order": [[ 1, "desc" ]]
         });
     });
 	function del() {
