@@ -1,0 +1,175 @@
+Error: That port is already in use.
+[19/Feb/2019 17:24:01] "GET / HTTP/1.1" 200 20548
+Not Found: /favicon.ico
+[19/Feb/2019 17:24:01] "GET /favicon.ico HTTP/1.1" 404 4046
+[19/Feb/2019 17:51:34] "GET /svnlist.html HTTP/1.1" 200 25015
+[19/Feb/2019 17:51:35] "GET /static/vendor/datatables-plugins/dataTables.bootstrap.min.js HTTP/1.1" 200 1942
+[19/Feb/2019 17:51:35] "GET /static/vendor/datatables-responsive/dataTables.responsive.js HTTP/1.1" 200 25098
+[19/Feb/2019 17:51:35] "GET /static/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+[19/Feb/2019 17:51:35] "GET /static/vendor/datatables/js/jquery.dataTables.min.js HTTP/1.1" 200 82638
+[19/Feb/2019 17:51:35] "GET /static/vendor/images/sort_both.png HTTP/1.1" 200 201
+[19/Feb/2019 17:51:35] "GET /static/vendor/images/sort_desc.png HTTP/1.1" 200 158
+[19/Feb/2019 17:51:36] "GET /svn_add.html HTTP/1.1" 200 27293
+[19/Feb/2019 17:51:37] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:23:46] "GET / HTTP/1.1" 200 20548
+Not Found: /favicon.ico
+[20/Feb/2019 09:23:46] "GET /favicon.ico HTTP/1.1" 404 4046
+[20/Feb/2019 09:23:48] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:23:48] "GET /static/vendor/datatables/js/jquery.dataTables.min.js HTTP/1.1" 304 0
+[20/Feb/2019 09:23:48] "GET /static/vendor/datatables-responsive/dataTables.responsive.js HTTP/1.1" 304 0
+[20/Feb/2019 09:23:48] "GET /static/vendor/datatables-plugins/dataTables.bootstrap.min.js HTTP/1.1" 304 0
+[20/Feb/2019 09:23:48] "GET /static/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 0
+[20/Feb/2019 09:23:48] "GET /static/vendor/images/sort_both.png HTTP/1.1" 304 0
+[20/Feb/2019 09:23:48] "GET /static/vendor/images/sort_desc.png HTTP/1.1" 304 0
+[20/Feb/2019 09:23:51] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:23:52] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:23:54] "GET /asset_list.html HTTP/1.1" 200 36429
+[20/Feb/2019 09:23:54] "GET /static/vendor/images/sort_asc.png HTTP/1.1" 200 160
+[20/Feb/2019 09:23:56] "GET /asset_add.html HTTP/1.1" 200 27856
+[20/Feb/2019 09:23:58] "GET /task_execute.html HTTP/1.1" 200 23635
+[20/Feb/2019 09:23:58] "GET /host_list.html HTTP/1.1" 200 23735
+[20/Feb/2019 09:24:00] "GET /task_execute.html HTTP/1.1" 200 23635
+[20/Feb/2019 09:24:07] "GET /host_list.html HTTP/1.1" 200 23735
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 19, 2019 - 17:23:22
+Django version 1.10, using settings 'shield.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+1
+root
+1
+root
+Unhandled exception in thread started by <function wrapper at 0x7fda352951b8>
+Performing system checks...
+
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 226, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/commands/runserver.py", line 121, in inner_run
+    self.check(display_num_errors=True)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/base.py", line 385, in check
+    include_deployment_checks=include_deployment_checks,
+  File "/usr/lib64/python2.7/site-packages/django/core/management/base.py", line 372, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/checks/registry.py", line 81, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "/usr/lib64/python2.7/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/lib64/python2.7/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    for pattern in resolver.url_patterns:
+  File "/usr/lib64/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/lib64/python2.7/site-packages/django/urls/resolvers.py", line 310, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib64/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/lib64/python2.7/site-packages/django/urls/resolvers.py", line 303, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/opt/svninfo/shield/shield/urls.py", line 34, in <module>
+    url(r'^host_list', host_list),
+NameError: name 'host_list' is not defined
+[20/Feb/2019 09:28:09] "GET /svnlist.html HTTP/1.1" 200 25015
+Not Found: /host_list.html
+[20/Feb/2019 09:28:13] "GET /host_list.html HTTP/1.1" 404 3478
+[20/Feb/2019 09:28:28] "GET /asset_list.html HTTP/1.1" 200 36429
+[20/Feb/2019 09:28:31] "GET /svnlist.html HTTP/1.1" 200 25015
+Not Found: /svn_mod/1
+[20/Feb/2019 09:28:35] "GET /svn_mod/1 HTTP/1.1" 404 3463
+[20/Feb/2019 09:29:00] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:33:49] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:33:49] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:33:50] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:34:04] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:34:06] "GET /asset_list.html HTTP/1.1" 200 36429
+[20/Feb/2019 09:34:07] "GET /asset_add.html HTTP/1.1" 200 27856
+[20/Feb/2019 09:34:08] "GET /asset_list.html HTTP/1.1" 200 36429
+[20/Feb/2019 09:34:09] "GET /svnlist.html HTTP/1.1" 200 25015
+Not Found: /host_list.html
+[20/Feb/2019 09:34:12] "GET /host_list.html HTTP/1.1" 404 3478
+[20/Feb/2019 09:34:15] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:35:11] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:35:12] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:35:14] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:35:16] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:35:17] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:35:18] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:35:23] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:35:24] "GET /svnlist.html HTTP/1.1" 200 25015
+[20/Feb/2019 09:35:52] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:36:09] "POST /svn_add HTTP/1.1" 302 0
+[20/Feb/2019 09:36:09] "GET /svnlist.html HTTP/1.1" 200 26012
+[20/Feb/2019 09:36:20] "GET /svn_delete/36 HTTP/1.1" 301 0
+[20/Feb/2019 09:36:20] "GET /svn_delete/36/ HTTP/1.1" 302 0
+[20/Feb/2019 09:36:20] "GET /svnlist HTTP/1.1" 200 25015
+[20/Feb/2019 09:58:53] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 09:59:33] "POST /svn_add HTTP/1.1" 302 0
+[20/Feb/2019 09:59:33] "GET /svnlist.html HTTP/1.1" 200 26013
+[20/Feb/2019 10:03:58] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:03:59] "GET /svnlist.html HTTP/1.1" 200 26013
+[20/Feb/2019 10:04:00] "GET /svnlist.html HTTP/1.1" 200 26013
+[20/Feb/2019 10:04:01] "GET /svn_add.html HTTP/1.1" 200 27293
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 20, 2019 - 09:28:03
+Django version 1.10, using settings 'shield.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+bbb
+start
+KML 信息科技 http://192.158.1.2/svn/QAZ 好运力
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+<type 'str'>
+KML 信息科技 http://192.158.1.2/svn/QAZ 好运力
+start command
+cd /data/svn/ && sh /data/svn/svn_create.sh KML /var/tmp/svnupload/ZJXL-QT-SCM-09项目组成员1表.xlsx
+over
+bbb
+start
+UJN 信息科技 http://192.158.1.2/svn/LHJH 好运力
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+<type 'str'>
+UJN 信息科技 http://192.158.1.2/svn/LHJH 好运力
+start command
+cd /data/svn/ && sh /data/svn/svn_create.sh UJN /var/tmp/svnupload/ZJXL-QT-SCM-09项目组成员1表.xlsx
+over
+[20/Feb/2019 10:20:13] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:21:08] "POST /svn_add HTTP/1.1" 302 0
+[20/Feb/2019 10:21:08] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:22:19] "GET /svnlist.html HTTP/1.1" 200 27010
+[20/Feb/2019 10:22:25] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:22:44] "GET /svn_add.html HTTP/1.1" 200 27293
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 20, 2019 - 10:20:05
+Django version 1.10, using settings 'shield.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+bbb
+start
+QQA 信息科技 http://192.158.1.2/svn/HYL 好运力
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+ZJXL-QT-SCM-09项目组成员1表.xlsx
+<type 'str'>
+QQA 信息科技 http://192.158.1.2/svn/HYL 好运力
+start command
+cd /data/svn/ && sh /data/svn/svn_create.sh QQA /var/tmp/svnupload/ZJXL-QT-SCM-09项目组成员1表.xlsx
+over
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 20, 2019 - 10:23:47
+Django version 1.10, using settings 'shield.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[20/Feb/2019 10:36:10] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:36:36] "POST /svn_add HTTP/1.1" 302 0
+[20/Feb/2019 10:36:36] "GET /svn_add.html HTTP/1.1" 200 27293
+[20/Feb/2019 10:38:20] "GET /svn_add.html HTTP/1.1" 200 27293

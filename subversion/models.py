@@ -9,6 +9,6 @@ class Subversion(models.Model):
 	svn_company = models.CharField(max_length=20)
 	svn_zhname = models.CharField(max_length=200)
 	svn_url = models.CharField(max_length=100)
-
+	
 	def __unicode__(self):
 		return self.svn_enname

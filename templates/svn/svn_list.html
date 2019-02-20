@@ -13,7 +13,13 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                             {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -87,7 +93,7 @@
         $('#dataTables-example').DataTable({
           "scrollX":true,
             bAutoWidth: true,
-            "order": [[ 1, "desc" ]]
+	   "order": [[ 0, "desc" ]]
         });
     });
 	function del() {
