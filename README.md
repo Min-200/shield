@@ -15,5 +15,10 @@
 安装：
 apt-get install libmysqlclient-dev
 pip install paramiko
-python manage.py makemigrations
+
 pip install MySQL-python
+
+
+
+# python manage.py makemigrations
+# python manage.py migrate
